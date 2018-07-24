@@ -27,12 +27,12 @@ ansible-playbook trex-sw-install.yaml
 1. Update list of hosts to install TRex onto.
   * (IP or HOSTNAME)
 1. Handle the remote user username by:
-  1. update the ansible_user='' as required by the remote generator system, OR
-  1. supply it to ansible via --user
+  * update the ansible_user='' as required by the remote generator system, OR
+  * supply it to ansible via --user
 1. Handle the remote user password by:
-  1. update the ansible_become_pass=''as required by the remote generator system per host, OR
-  1. supply it to ansible via --ask-become-pass, OR
-  1. remote system allows for NOPASSWORD sudo access
+  * update the ansible_become_pass=''as required by the remote generator system per host, OR
+  * supply it to ansible via --ask-become-pass, OR
+  * remote system allows for NOPASSWORD sudo access
     
 ## Password Vaults
 * if security is relevant in your deployemnt/scenario, change to vaults:
