@@ -1,0 +1,79 @@
+---
+
+# -----------------------------------------------------------------------------
+# TRex Linux OS Dependencies and Other Preparations
+# -----------------------------------------------------------------------------
+
+
+# - Ensure there exists the "wheel" group and sudo NOPASSWD
+#
+#   Variations across Linux distributions do this differently. Sticking with "wheel" for simplicity
+#   rather than trying to accommodate all the different ways distros ship.
+
+
+  - name: "verify 'wheel' group exists"
+    group:
+      name: wheel
+      state: present
+
+      
+  - name: "allow 'wheel' group to have passwordless sudo"
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^%wheel'
+      line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+      validate: '/usr/sbin/visudo -cf %s'
+
+
+# - Create the TRex user
+
+
+  - name: "create the 'trex' user with password 'trex'"
+    user:
+      name: trex
+      comment: trex-ansible
+      password: "{{trex_user_password}}"
+      shell: /bin/bash
+      groups: wheel
+      append: yes
+
+
+# - Workaround unprivileged user issues
+#
+#   Subsequent roles will run as an unprivileged user (trex)
+#   https://docs.ansible.com/ansible/latest/user_guide/become.html#becoming-an-unprivileged-user
+#   Workaround all the annoying security implications that this brings
+#   (allowing any user to read/write to /var/tmp, not a big deal)
+
+#  - name: "workaround unprivileged user permissions on ansible temp files"
+#    file:
+#      path: "/var/tmp"
+#      state: directory
+#      mode: 0777
+
+# grrr
+# didn't work
+# see maybe https://github.com/ansible/ansible/pull/41568
+# -- FIXED AFTER 2.6.1 -- TBD waiting
+#
+# (the above will only be important if/when these scripts are ever extended to support
+#  configuring and running the trex traffic simulator as the trex user ...)
+
+
+# - In the future we may need to install some packages for TRex to function (none at this time)
+#   as per: https://trex-tgn.cisco.com/trex/doc/trex_manual.html#_install_linux
+#
+#  - name: "install TBD (CentOS 7+) TRex dependencies"
+#    yum:
+#            name: TBD
+#            state: present
+#    when: ansible_distribution == "CentOS" and ansible_distribution_major_version >= "7"
+#
+#  - name: "install TBD (Ubuntu 16.04+) TRex dependencies"
+#    yum:
+#            name: TBD
+#            state: present
+#    when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version >= "16"
+#
+

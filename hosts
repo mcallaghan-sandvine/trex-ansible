@@ -1,0 +1,2 @@
+[trex-generators]
+<HOSTNAME/IP> ansible_user='<user>' ansible_become_pass='<insecure_plaintext_password>'

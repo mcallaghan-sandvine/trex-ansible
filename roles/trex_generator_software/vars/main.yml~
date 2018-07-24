@@ -1,0 +1,30 @@
+---
+
+# All can be overriden on command line too as per:
+#  - https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#passing-variables-on-the-command-line
+
+# -----------------------------------------------------------------------------
+# TRex download source URL
+trex_release_URL: "https://trex-tgn.cisco.com/trex/release"
+
+
+# -----------------------------------------------------------------------------
+# TRex software version request see:
+#  - https://trex-tgn.cisco.com/trex/doc/trex_manual.html#_obtaining_the_trex_package
+
+# By default, choose latest stable
+trex_version: "latest"
+
+# Latest bleeding edge
+#trex_version: "be_latest"
+
+# Specific sw version (MUST include file type suffix '.tar.gz')
+#trex_version: "v#.##.tar.gz"
+# Example to acquire v2.40
+#trex_version: "v2.40.tar.gz"
+
+
+# -----------------------------------------------------------------------------
+# TRex installation directory
+trex_install_dir: "/opt/trex"
+
