@@ -1,10 +1,11 @@
 ---
 all:
-  localhost
-#  test.example.org:
-#    ansible_user: 'tux'
-#    ansible_become_pass: 'LinuxRulz'
-vars:
-  # TRex USER ACCOUNT PASSWORD (will be created by these scripts)
-  # created with: 'mkpasswd --method=sha-512' pw=trex
-  trex_user_password: $6$pWdcvk1g6d2hX$y3QDB49d7efr6QGVxPjQT/VHARzLz4G4eHMjTqykbmBiXwONRQmCiVlpvp11wiH8duKq0OOmVXFo2go7G0fjn.
+  children:
+    localhost
+#    test.example.org:
+#      ansible_user: 'tux'
+#      ansible_become_pass: 'LinuxRulz'
+  vars:
+    # TRex USER ACCOUNT PASSWORD (will be created by these scripts)
+    # Created with: 'mkpasswd --method=sha-512' pw=trex
+    trex_user_password: $6$pWdcvk1g6d2hX$y3QDB49d7efr6QGVxPjQT/VHARzLz4G4eHMjTqykbmBiXwONRQmCiVlpvp11wiH8duKq0OOmVXFo2go7G0fjn.
