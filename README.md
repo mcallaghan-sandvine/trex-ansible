@@ -14,7 +14,7 @@ It will:
    (see below for details)
 1. Execute the playbook as per https://docs.ansible.com/ansible/latest/intro_getting_started.html
 ```
-ansible-playbook trex-sw-install.yaml
+ansible-playbook -K trex-sw-install.yaml
 ```
 
 ## Assumptions
