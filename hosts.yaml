@@ -1,0 +1,9 @@
+---
+all:
+  hosts:
+  children:
+    trex-generators:
+      localhost
+#      test.example.org:
+#         ansible_user: 'tux'
+#        ansible_become_pass: 'LinuxRulz'
