@@ -1,7 +1,8 @@
 ---
 all:
   hosts:
-    localhost
+    localhost:
+      ansible_connection: local
 #    test.example.org:
 #      ansible_user: 'tux'
 #      ansible_become_pass: 'LinuxRulz'
