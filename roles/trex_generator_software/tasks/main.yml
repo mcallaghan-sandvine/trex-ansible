@@ -38,7 +38,7 @@
       state: directory
       owner: trex
       group: trex
-      mode: 0777
+      # mode: 0777
       recurse: yes
 
   - debug:
