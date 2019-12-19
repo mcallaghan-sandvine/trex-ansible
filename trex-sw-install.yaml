@@ -1,34 +1,16 @@
 ---
-
-# -----------------------------------------------------------------------------
-# playbook prep for all hosts
-# -----------------------------------------------------------------------------
-
-- hosts: all
+- hosts: all, localhost
   gather_facts: no
-  vars:
-
-    # TRex USER ACCOUNT PASSWORD (will be created by these scripts)
-    # created with: 'mkpasswd --method=sha-512'
-    # pw=trex
-    trex_user_password: $6$pWdcvk1g6d2hX$y3QDB49d7efr6QGVxPjQT/VHARzLz4G4eHMjTqykbmBiXwONRQmCiVlpvp11wiH8duKq0OOmVXFo2go7G0fjn.
-
-  
-  tasks:
+  pre_tasks:
     - set_fact: trex_user_password={{ trex_user_password }}
       no_log: true
-  
-  
-# -----------------------------------------------------------------------------
-# Linux OS base platform actions and TRex installation
-# -----------------------------------------------------------------------------
 
-# ASSUMPTION: SSH-key access is already setup for this initial root-previleged user
-# (or user passes in "--ask-become-..." or in hosts file) - see readme
-
-- hosts: trex-generators
+  # ASSUMPTION: SSH-key access is already setup for this initial root-privileged user
+  # (or user passes in "--ask-become-..." or in hosts.yaml file) - see README.md
   become: yes
   roles:
   - role: base_linux_platform_deps
   - role: trex_generator_software
+
+
 
