@@ -1,6 +1,6 @@
 ---
 all:
-  children:
+  hosts:
     localhost
 #    test.example.org:
 #      ansible_user: 'tux'
