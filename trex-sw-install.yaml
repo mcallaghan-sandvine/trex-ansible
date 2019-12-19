@@ -3,7 +3,7 @@
 # playbook prep for all hosts.yaml
 # -----------------------------------------------------------------------------
 
-- hosts: all
+- hosts: all, localhost
   gather_facts: no
   vars:
     # TRex USER ACCOUNT PASSWORD (will be created by these scripts)
