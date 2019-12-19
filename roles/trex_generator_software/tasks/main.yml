@@ -42,4 +42,4 @@
       recurse: yes
 
   - debug:
-      msg: "TRex is installed in {{ trex_install_dir }}."
+      msg: "TRex is installed in {{ trex_install_dir }} and is owned by 'trex' user."
